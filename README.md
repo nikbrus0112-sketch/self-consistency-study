@@ -109,23 +109,8 @@ the question asks when profit turns *positive*, which needs a 13th year.
   useful reminder that "parsing failure" and "generation truncation" can
   look identical from the output alone and are worth distinguishing before
   concluding a prompt or regex is broken.
-- **Few-shot prompting underperformed a plain system-message instruction**
-  for this model. In-context exemplars placed in the same user turn did not
-  reliably shift the output format for this instruct-tuned model; an
-  explicit system-level instruction did. Worth keeping in mind for prompt
-  design with small instruct models generally.
+
 - **No fine-tuning, single model, single dataset.** This is a scoped
   inference-time study, not a claim about self-consistency in general —
   results are specific to Qwen2.5-1.5B-Instruct on GSM8K.
 
-## Reproducing
-
-```bash
-pip install -q transformers accelerate datasets
-```
-
-Code is organized as:
-- `sc_experiment.py` — model loading, prompt construction, sampling, and
-  checkpointing logic
-- `analysis.ipynb` — answer extraction, accuracy computation, and the plots
-  above
